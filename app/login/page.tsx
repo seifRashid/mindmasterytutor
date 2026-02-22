@@ -1,0 +1,107 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { useState } from "react";
+
+export default function LoginPage() {
+    const [isLoading, setIsLoading] = useState(false);
+
+    async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+        setIsLoading(true);
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 3000);
+    }
+
+    return (
+        <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-12 sm:px-6 lg:px-8">
+            <div className="w-full max-w-md space-y-8 bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
+                <div className="text-center">
+                    <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-900">
+                        Welcome back
+                    </h2>
+                    <p className="mt-2 text-sm text-slate-600">
+                        Please sign in to your account
+                    </p>
+                </div>
+                <form className="mt-8 space-y-6" onSubmit={onSubmit}>
+                    <div className="-space-y-px rounded-md shadow-sm">
+                        <div>
+                            <label htmlFor="email-address" className="sr-only">
+                                Email address
+                            </label>
+                            <input
+                                id="email-address"
+                                name="email"
+                                type="email"
+                                autoComplete="email"
+                                required
+                                className="relative block w-full rounded-t-md border-0 py-1.5 text-slate-900 ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 px-3"
+                                placeholder="Email address"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="password" className="sr-only">
+                                Password
+                            </label>
+                            <input
+                                id="password"
+                                name="password"
+                                type="password"
+                                autoComplete="current-password"
+                                required
+                                className="relative block w-full rounded-b-md border-0 py-1.5 text-slate-900 ring-1 ring-inset ring-slate-300 placeholder:text-slate-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 px-3"
+                                placeholder="Password"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center">
+                            <input
+                                id="remember-me"
+                                name="remember-me"
+                                type="checkbox"
+                                className="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-600"
+                            />
+                            <label htmlFor="remember-me" className="ml-2 block text-sm text-slate-900">
+                                Remember me
+                            </label>
+                        </div>
+
+                        <div className="text-sm">
+                            <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
+                                Forgot your password?
+                            </a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <Button
+                            type="submit"
+                            disabled={isLoading}
+                            className="group relative flex w-full justify-center"
+                        >
+                            {isLoading && (
+                                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                            )}
+                            Sign in
+                        </Button>
+                    </div>
+                </form>
+
+                <div className="text-center text-sm text-slate-600">
+                    Don't have an account?{" "}
+                    <Link href="/signup" className="font-semibold text-blue-600 hover:text-blue-500">
+                        Sign up for free
+                    </Link>
+                </div>
+            </div>
+        </div>
+    );
+}
