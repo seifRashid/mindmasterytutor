@@ -114,9 +114,9 @@ export default async function GradePage({ params }: { params: Promise<{ gradeId:
                                         <div key={i} className="group flex items-center justify-between p-3 rounded-lg border border-slate-100 hover:border-blue-200 hover:bg-blue-50 transition-colors cursor-pointer">
                                             <span className="font-medium text-slate-700 group-hover:text-blue-700">{topic}</span>
                                             <div className="flex items-center gap-2 text-slate-400 group-hover:text-blue-500">
-                                                <FileText size={16} title="Worksheet" />
-                                                <PlayCircle size={16} title="Video" />
-                                                <CheckCircle2 size={16} title="Marking Scheme" />
+                                                <FileText size={16} />
+                                                <PlayCircle size={16} />
+                                                <CheckCircle2 size={16} />
                                             </div>
                                         </div>
                                     ))}
